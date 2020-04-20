@@ -193,7 +193,7 @@ void Graph::DFS(int v)
 {
 	Node *temp1=array[v].listptr,*temp2=array[v].listptr;
 	visited[v]=1;
-	int x,y;
+	int x,y,i,count=0;
 	cout<<" "<<v;
 			
 	do
@@ -216,6 +216,17 @@ void Graph::DFS(int v)
 			}				
 		}
 		v=s.pop();
+		for(i=0;i<V;i++)
+		{
+			if(visited[i]==1)
+			{
+				++count;
+			}
+		}
+		if(s.isempty()==1 && count==V-1)
+		{
+			s.push(v);
+		}
 	}while(s.isempty()!=1);
 }
 
